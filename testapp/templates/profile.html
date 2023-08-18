@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+{% block navbar %} 
+<p class="text-danger"> Built by 200100014-200050145 </p>
+<h1> Welcome to Github Profiles! </h1> <br>
+<a href="../../explore" class="btn btn-primary"> Explore </a> <a href="{% url 'index' t %}" class="btn btn-primary"> My Profile </a> <a href="../../accounts/login" class="btn btn-primary"> Logout </a> <br> <br>
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+  <br> <br>
+  <h1> {{ o.user.first_name }} {{ o.user.last_name }} (@{{ o.user }}) </h1> 
+  <p> 
+    {{ o.followers }} followers <br>
+    Profile last updated : {{ date }}, {{ time }} 
+    {% ifequal o.user.id curr %}
+        (<a href="./"> Update now </a>)
+    {% endifequal %}
+    <ul>
+        {% for i in repo_list %}
+            <li> {{ i.repo_name }} - {{ i.stars }} stars </li> 
+        {% endfor %}
+    </ul>  
+  </p>
+{% endif %}
+{% endblock %}

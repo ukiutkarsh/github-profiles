@@ -1,0 +1,17 @@
+{% extends 'bases.html' %}
+
+{% block navbar %} 
+<p class="text-danger"> Built by 200100014-200050145 </p>
+<h1> Welcome to Github Profiles! </h1> <br>
+<a href="#" class="btn btn-primary"> Signup </a> <a href="accounts/login" class="btn btn-primary"> Login </a> <br> <br>
+{% endblock %}
+
+{% block content %}
+<br> 
+    <h1 style="padding-bottom: 10px;"> Signup with Github profile </h1> 
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit"> Signup </button>
+    </form>
+{% endblock %}

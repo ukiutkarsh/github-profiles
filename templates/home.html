@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+{% block navbar %} 
+<p class="text-danger"> Built by 200100014-200050145 </p>
+<h1> Welcome to Github Profiles! </h1> <br>
+<a href="#" class="btn btn-primary"> Explore </a> <a href="{% url 'index' current %}" class="btn btn-primary"> My Profile </a> <a href="accounts/login" class="btn btn-primary"> Logout </a> <br> <br>
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+  <br> 
+  <ul>
+    {% for i in o %}
+      <li> <a href="{% url 'index' i.id %}" class="btn btn-outline-primary"> {{ i.user }} </a> </li> <br> 
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>You are not logged in </p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
